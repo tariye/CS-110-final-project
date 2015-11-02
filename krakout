@@ -14,13 +14,14 @@ import javafx.scene.shape.Line;
  *
  * @author Xuanyi Zhu
  */
-public class krakout extends DrawPane implements krakoutInterface{
+public class krakout extends DrawPane implements krakoutInterface {
 
     public drawBoard board;
     public double lineStartX = getPANE_X_DIM() * 0.48;
-    public double lineStartY = getPANE_Y_DIM()*0.9;
+    public double lineStartY = getPANE_Y_DIM() * 0.9;
     public double lineEndX = getPANE_X_DIM() * 0.52;
-    public double lineEndY = getPANE_Y_DIM()*0.9;
+    public double lineEndY = getPANE_Y_DIM() * 0.9;
+
     public krakout() {
         super(Color.WHITE);
         initialize();
@@ -32,8 +33,8 @@ public class krakout extends DrawPane implements krakoutInterface{
     }
 
     private void initialize() {
-        
-        board = new drawBoard(this,lineStartX, lineStartY,lineEndX, lineEndY);
+
+        board = new drawBoard(this, lineStartX, lineStartY, lineEndX, lineEndY);
     }
 
     /**
@@ -44,4 +45,10 @@ public class krakout extends DrawPane implements krakoutInterface{
     public void addLine(Line line) {
         pane.getChildren().add(line);
     }
+
+    @Override
+    public void update() {
+            board.update();
+    }
+
 }
