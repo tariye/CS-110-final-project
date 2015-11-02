@@ -7,28 +7,50 @@
  * @author Xuanyi Zhu
  */
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import javafx.stage.Stage;
 
+public class DrawPane extends Application {
 
-public class DrawPane extends Application{
     static final int PANE_X_DIM = 600;
     static final int PANE_Y_DIM = 800;
     Pane pane;
     private Scene scene;
-    
+
+    /**
+     * @return the PANE_X_DIM
+     */
+    public static int getPANE_X_DIM() {
+        return PANE_X_DIM;
+    }
+
+    /**
+     * @return the PANE_Y_DIM
+     */
+    public static int getPANE_Y_DIM() {
+        return PANE_Y_DIM;
+    }
+
+        public DrawPane(Color backgroundColor) {
+        pane = new Pane();
+        BackgroundFill myBF = new BackgroundFill(backgroundColor, new CornerRadii(1),
+        new Insets(0.0,0.0,0.0,0.0));// or null for the padding
+        pane.setBackground(new Background(myBF));
+        scene = new Scene(pane, PANE_X_DIM, PANE_Y_DIM);
+
+    }
     @Override
     public void start(Stage primaryStage) {
-        pane = new Pane();
-        scene = new Scene(pane, PANE_X_DIM, PANE_Y_DIM);
         primaryStage.setTitle("Krakout");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public static void main(String[] args) {
-        Application.launch(args);
-    }
-}
 
+}
