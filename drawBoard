@@ -1,3 +1,4 @@
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
@@ -19,5 +20,10 @@ public class drawBoard{
         line.setStrokeWidth(2.0);
         line.setStroke(Color.BLACK);
         kr.addLine(this.line);
+    }
+
+    
+    void update(){
+        
     }
 }
