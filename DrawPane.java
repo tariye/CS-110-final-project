@@ -7,6 +7,8 @@
  * @author Xuanyi Zhu
  */
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
@@ -17,7 +19,7 @@ import javafx.scene.paint.Color;
 
 import javafx.stage.Stage;
 
-public class DrawPane extends Application {
+public abstract class DrawPane extends Application {
 
     static final int PANE_X_DIM = 600;
     static final int PANE_Y_DIM = 800;
@@ -38,14 +40,15 @@ public class DrawPane extends Application {
         return PANE_Y_DIM;
     }
 
-        public DrawPane(Color backgroundColor) {
+    public DrawPane(Color backgroundColor) {
         pane = new Pane();
         BackgroundFill myBF = new BackgroundFill(backgroundColor, new CornerRadii(1),
-        new Insets(0.0,0.0,0.0,0.0));// or null for the padding
+                new Insets(0.0, 0.0, 0.0, 0.0));// or null for the padding
         pane.setBackground(new Background(myBF));
         scene = new Scene(pane, PANE_X_DIM, PANE_Y_DIM);
 
     }
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Krakout");
@@ -53,4 +56,12 @@ public class DrawPane extends Application {
         primaryStage.show();
     }
 
+    protected void setUpAnimation() {
+        // Create a handler
+        EventHandler<ActionEvent> eventHandler = (ActionEvent e) -> {
+            update();
+        };
+    }
+
+    abstract public void update();
 }
